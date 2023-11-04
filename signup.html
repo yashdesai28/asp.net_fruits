@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../home-img/Apple-Logo-Modern-Icon.png">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="signup.css">
+    <title>Sign Up</title>
+</head>
+
+<style>
+    .input1:focus {
+        outline: none;
+    }
+
+    .icon {
+        width: 100%;
+        height: 7rem;
+        color: white;
+    }
+
+
+    .popup1 {
+        width: 360px;
+        background-color: white;
+        border-radius: 13px;
+        border: none;
+
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%)scale(0.1);
+        display: flex;
+        flex-direction: column;
+
+        box-shadow: 2px 2px 40px rgb(0 0 0 / 19%);
+        align-items: center;
+        height: 27rem;
+        visibility: hidden;
+        transition: transform 0.4s, top 0.4s;
+
+
+    }
+
+
+    .open-popup {
+        visibility: visible;
+        top: 50%;
+        transform: translate(-50%, -50%)scale(1);
+
+
+
+
+    }
+
+
+
+    .errorimg {
+
+        background-color: #e03131;
+        border-top-left-radius: 13px;
+        border-top-right-radius: 13px;
+        width: 100%;
+        height: 8.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .decerror {
+        margin-bottom: 3rem;
+
+    }
+
+    .otpsub {
+        margin-top: 1.5rem;
+    }
+
+    .maindec {
+        margin-top: 1rem;
+    }
+
+    .input1 {
+        height: 4.2rem;
+        width: 16rem;
+        border-radius: 5px;
+        padding: 1rem;
+        border: none;
+        border-bottom: 2px solid black;
+        margin-bottom: 2rem;
+    }
+
+
+
+
+    .input {
+
+        border-bottom: 2px solid black;
+
+
+    }
+
+    .succse {
+
+        border-color: green;
+    }
+
+    .error {
+        border-color: #e03131;
+      
+    }
+
+    .notic{
+        margin-bottom: 1rem;
+        margin-top: -1rem;
+        color: red;
+        font-size: 1.3rem;
+        
+    }
+</style>
+
+<body>
+    <section class="main-login" id="blur">
+        <div class="grid-containerf1">
+
+            <div class="grid-2">
+                <div class="grid-right signup-pad">
+
+                    <form name="form1" class="form-login" method="POST">
+                        <h2 class="reg-margin">Sign Up</h2>
+
+                        <div class="in-flexf">
+
+                            <input type="text" placeholder="First Name" class="input1" id="input1" onkeyup="demo(document.form1.FirstName)" name="FirstName">
+                         
+                            <input type="text" placeholder="Last Name" class="input1" id="input2" onkeyup="lnamedemo(document.form1.LastName)" name="LastName">
+                        </div>
+                        <p class="notic" id="noticname"></p>
+
+                        <div class="in-flex">
+
+                            <input type="email" placeholder="email-abc@gmail.com" class="input" id="input" onkeyup="emaildemo(document.form1.email)" name="email" required>
+                        </div>
+                        <p class="notic" id="noticemail"></p>
+
+                        
+
+
+                        <div class="in-flex">
+
+                            <input type="number" placeholder="phone number" class="input" id="input3" onkeyup="phnodemo(document.form1.phonumber)" name="phonumber">
+                        </div>
+                        <p class="notic" id="noticnumber"></p>
+
+                        <div class="in-flex">
+
+                            <input type="password" placeholder="password" class="input" id="input4" onkeyup="passdemo(document.form1.password)" name="password">
+                        </div>
+                        <p class="notic" id="noticpassword"></p>
+
+                        <div class="in-flex">
+
+                            <input type="password" placeholder="confirm-password" class="input" id="input5" onkeyup="passcondemo(document.form1.confirmpassword,document.form1.password)" name="confirmpassword">
+                        </div>
+                        <p class="notic" id="connoticpassword"></p>
+
+                        <div class="in-flex cheak">
+                            <div class="cheak-flex">
+                                <input type="checkbox" class="cheakbox" name="checkbox1" value="accept">
+                                <p class="sub-text">I agree to The Terms and Condition.</p>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button type="submit" class="input m-b" name="sig">Sign Up</button>
+
+                    </form>
+                    <div class="in-flex sign-up">
+                        <p class="sub-text">Alredy have Account?</p> <a class="login-link" href="login.html">Log In</a>
+                    </div>
+                </div>
+                <div class="grid-left sign-right">
+
+                    <img src="./assets/img/loginimg/orange.jpg" class="log-img sign-img">
+
+                </div>
+            </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        let fname = document.getElementById("input1");
+        let lname = document.getElementById("input2");
+        let email1 = document.getElementById("input");
+        let phno = document.getElementById("input3");
+        let pass = document.getElementById("input4");
+        let passcon = document.getElementById("input5");
+
+        let mpass = 0;
+
+
+
+        function demo(FirstName) {
+
+
+            var regEx = /^[A-Za-z]+$/;
+            if (FirstName.value.match(regEx)) {
+                fname.classList.remove("error");
+                fname.classList.add("succse");
+                document.getElementById("noticname").innerHTML = "";
+
+            } else {
+                fname.classList.remove("succse");
+                fname.classList.add("error");
+                document.getElementById("noticname").innerHTML = "Only Characters without whitespaces.";
+                return false;
+            }
+
+
+
+        }
+
+
+        function lnamedemo(LastName) {
+
+
+            var regEx = /^[A-Za-z]+$/;
+            if (LastName.value.match(regEx)) {
+
+                lname.classList.remove("error");
+                lname.classList.add("succse");
+                document.getElementById("noticname").innerHTML = "";
+
+            } else {
+                lname.classList.remove("succse");
+                lname.classList.add("error");
+                document.getElementById("noticname").innerHTML = "Only Characters without whitespaces.";
+                return false;
+            }
+
+
+
+        }
+
+
+        function emaildemo(email) {
+
+
+
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (email.value.match(mailformat)) {
+                email1.classList.remove("error");
+                email1.classList.add("succse");
+                document.getElementById("noticemail").innerHTML = "";
+
+
+            } else {
+                email1.classList.remove("succse");
+                email1.classList.add("error");
+                document.getElementById("noticemail").innerHTML = "Must be in valid format.";
+            }
+
+
+
+        }
+
+
+
+
+        function phnodemo(phonumber) {
+
+
+            var phoneno = /^\d{10}$/;
+
+            if (phonumber.value.match(phoneno)) {
+                phno.classList.remove("error");
+                phno.classList.add("succse");
+                document.getElementById("noticnumber").innerHTML = "";
+            } else {
+                phno.classList.remove("succse");
+                phno.classList.add("error");
+                document.getElementById("noticnumber").innerHTML = "Contact Number Must be numbers and could start with 6,7,8,9 only.";
+            }
+
+
+
+        }
+
+
+
+
+        function passdemo(password) {
+
+
+            // password between 7 to 15 characters which contain at least one numeric digit and a special character
+
+
+            mpass = password;
+
+            var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+            if (password.value.match(paswd)) {
+
+                pass.classList.remove("error");
+                pass.classList.add("succse");
+                document.getElementById("noticpassword").innerHTML = "";
+
+            } else {
+                pass.classList.remove("succse");
+                pass.classList.add("error");
+                document.getElementById("noticpassword").innerHTML = "password between 7 to 15 characters which contain at least one numeric digit and a special character";
+            }
+
+
+
+        }
+
+
+
+        function passcondemo(confirmpassword, password) {
+
+
+            // password between 7 to 15 characters which contain at least one numeric digit and a special character
+
+
+
+            if (confirmpassword.value === password.value) {
+
+                passcon.classList.remove("error");
+                passcon.classList.add("succse");
+                document.getElementById("connoticpassword").innerHTML = "";
+
+            } else {
+                passcon.classList.remove("succse");
+                passcon.classList.add("error");
+                document.getElementById("connoticpassword").innerHTML = "password between 7 to 15 characters which contain at least one numeric digit and a special character";
+            }
+
+
+
+        }
+
+        
+    </script>
+
+
+
+
+
+</body>
+
+</html>
